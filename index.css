@@ -1,0 +1,129 @@
+/* (*) selects every element in the html body  */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7px;
+    color: #777;
+    padding: 10px;
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba(169, 169, 169, 0.664), rgba(32, 32, 32, 0.938)), url(imges/backgroundImage.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0%, 100% 10vh, 0 50%);
+}
+
+.heading-primary {
+    color: white;
+}
+
+.heading-primary-main {
+    margin-top: 50px;
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 25px;
+    animation-name: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+}
+
+.heading-primary-sub {
+    display: block;
+    padding-top: 8%;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    animation-name: moveInRight;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+}
+
+.text-box {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    transform: translate(-5%, -5%);
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    80% {
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(400px);
+    }
+    80% {
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.login-form {
+    margin-top: -600px;
+    left: 60%;
+    margin-left: -100px;
+    height: 320px;
+    width: 35%;
+    position: fixed;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    animation-name: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+}
+
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 18px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.842);
+    color: white;
+    padding: 14px 20px;
+    margin: 18px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+input[type=submit]:hover {
+    background-color: rgba(255, 0, 0, 0.562);
+}
