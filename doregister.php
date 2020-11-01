@@ -11,6 +11,7 @@ $password1 = md5($password1);
  $sql ="INSERT INTO `users`(`player_id`,`username`,`password`) VALUES ('','$username','$password1')";
  mysqli_query($mysqli,$sql);
 
+ header('Location: game.php');
  print json_encode(array('success'=>'ok'));
 
 ?>
