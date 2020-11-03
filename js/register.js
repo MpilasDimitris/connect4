@@ -40,7 +40,7 @@ $(document).ready(function() {
             let error = document.querySelector(`.error-${input}`);
             if (element.validity.valueMissing) {
                 error.style.display = 'block';
-                error.textContent = 'This field is required';
+                error.textContent = 'Υποχρεωτικό πεδίο';
             } else if (!element.checkValidity()) {
                 error.textContent = msg;
                 error.style.display = 'block';
@@ -52,10 +52,10 @@ $(document).ready(function() {
 
 
 
-    validate('username', "Must contain only letters.", "keyup");
-    validate('username', "Must contain only letters.", "focus");
-    validate("password1", "Must contain a number ,one uppercase and lowercase letter, 8+", "keyup");
-    validate("password1", "MMust contain a number ,one uppercase and lowercase letter, 8+", "focus");
+    validate('username', "Μόνο γράμματα.", "keyup");
+    validate('username', "Μόνο γράμματα.", "focus");
+    validate("password1", "Πρέπει να έχει ένα νούμερο , ένα κεφαλαίο και ένα μικρό γράμμα , 8+ ", "keyup");
+    validate("password1", "Πρέπει να έχει ένα νούμερο , ένα κεφαλαίο και ένα μικρό γράμμα , 8+", "focus");
 });
 
 // Register Confirm Password Validation
