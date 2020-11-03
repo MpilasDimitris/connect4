@@ -1,6 +1,7 @@
 //check if username exists
 var usernameExists = true;
 $("#username").blur(function(e) {
+
     e.preventDefault();
     const username = $('#username').val();
     if (username == '') {
@@ -19,6 +20,7 @@ $("#username").blur(function(e) {
         },
         error: function(x) {
             usernameExists = true;
+
             alert('Username exists try another');
             console.log("fail");
         }
@@ -27,10 +29,39 @@ $("#username").blur(function(e) {
 
 });
 
+//validate input fields
+
+$(document).ready(function() {
+
+    function validate(input, msg, event) {
+        let element = document.querySelector(`#${input}`);
+        element.addEventListener(`${event}`, function() {
+
+            let error = document.querySelector(`.error-${input}`);
+            if (element.validity.valueMissing) {
+                error.style.display = 'block';
+                error.textContent = 'This field is required';
+            } else if (!element.checkValidity()) {
+                error.textContent = msg;
+                error.style.display = 'block';
+            } else {
+                error.style.display = 'none';
+            }
+        });
+    }
+
+
+
+    validate('username', "Must contain only letters.", "keyup");
+    validate('username', "Must contain only letters.", "focus");
+    validate("password1", "Must contain a number ,one uppercase and lowercase letter, 8+", "keyup");
+    validate("password1", "MMust contain a number ,one uppercase and lowercase letter, 8+", "focus");
+});
+
 // Register Confirm Password Validation
+$('#registerbtn').on('click', function(e) {
 
-$('#registerbtn').on('click', function() {
-
+    e.preventDefault();
 
     //const error = document.querySelector(".error");
     const password1 = document.getElementById("password1").value;
@@ -41,24 +72,24 @@ $('#registerbtn').on('click', function() {
     //New Confirm Password
 
     if (password1 != password2) {
-        alert("oi kwdikoi den tairiazoun");;
-    } else {
+        //alert("oi kwdikoi den tairiazoun");
+        let error = document.querySelector(".error-password2");
+        error.style.color = 'red';
+        error.style.display = 'block';
+
+    } else if ((document.querySelector(".register-form").checkValidity()) && (usernameExists == false)) {
 
         $.ajax({
             url: "doregister.php",
-            type: "POST",
+            type: "post",
             data: {
                 username: username,
                 password1: password1,
                 password2: password2,
-
             },
             success: function() {
                 window.location = 'login.php';
-
             }
         })
-
     }
-
 });
