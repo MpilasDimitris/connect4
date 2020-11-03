@@ -9,10 +9,10 @@
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 1.6rem;
+    font-size: 16px;
     line-height: 1.7px;
     color: #777;
-    padding: 1rem;
+    padding: 10px;
 }
 
 .header {
@@ -29,11 +29,11 @@ body {
 }
 
 .heading-primary-main {
-    margin-top: 5rem;
+    margin-top: 50px;
     display: block;
-    font-size: 6rem;
+    font-size: 60px;
     font-weight: 400;
-    letter-spacing: 2.5rem;
+    letter-spacing: 25px;
     animation-name: moveInLeft;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
@@ -42,9 +42,9 @@ body {
 .heading-primary-sub {
     display: block;
     padding-top: 8%;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.8rem;
+    font-size: 20px;
+    font-weight: 700px;
+    letter-spacing: 8px;
     animation-name: moveInRight;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
@@ -60,10 +60,10 @@ body {
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-4rem);
+        transform: translateX(-40px);
     }
     80% {
-        transform: translateX(2rem);
+        transform: translateX(20px);
     }
     100% {
         opacity: 1;
@@ -74,10 +74,10 @@ body {
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(40rem);
+        transform: translateX(400px);
     }
     80% {
-        transform: translateX(-2rem);
+        transform: translateX(-20px);
     }
     100% {
         opacity: 1;
@@ -86,15 +86,15 @@ body {
 }
 
 .login-form {
-    margin-top: -60rem;
+    margin-top: -600px;
     left: 60%;
-    margin-left: -10rem;
-    height: 32rem;
+    margin-left: -100px;
+    height: 320px;
     width: 35%;
     position: fixed;
-    border-radius: 0.5rem;
+    border-radius: 5px;
     background-color: #f2f2f2;
-    padding: 2rem;
+    padding: 20px;
     animation-name: moveInLeft;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
@@ -103,25 +103,25 @@ body {
 input[type=text],
 select {
     width: 100%;
-    padding: 1.2rem 2rem;
-    margin: 1.8rem 0;
+    padding: 12px 20px;
+    margin: 18px 0;
     display: inline-block;
-    border: 0.1rem solid #ccc;
-    border-radius: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     box-sizing: border-box;
-    font-size: 1.8rem;
+    font-size: 18px;
 }
 
 input[type=submit] {
     width: 100%;
     background-color: rgba(128, 128, 128, 0.842);
     color: white;
-    padding: 1.4rem 2rem;
-    margin: 1.8rem 0;
+    padding: 14px 20px;
+    margin: 18px 0;
     border: none;
-    border-radius: 0.4rem;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 20px;
 }
 
 input[type=submit]:hover {
