@@ -85,21 +85,7 @@ body {
     }
 }
 
-.login-form {
-    margin-top: -600px;
-    left: 60%;
-    margin-left: -100px;
-    height: 320px;
-    width: 35%;
-    position: fixed;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    animation-name: moveInLeft;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-out;
-}
-
+.login-form,
 .register-form {
     margin-top: -600px;
     left: 60%;
@@ -114,6 +100,22 @@ body {
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
 }
+
+
+/* .register-form {
+    margin-top: -600px;
+    left: 60%;
+    margin-left: -100px;
+    height: 320px;
+    width: 35%;
+    position: fixed;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    animation-name: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+} */
 
 input[type=text],
 input[type=password],
@@ -145,7 +147,8 @@ input[type=submit]:hover {
 }
 
 .error-username,
-.error-password1 {
+.error-password1,
+.error-password {
     width: 500px;
     font-size: 16px;
     color: red;

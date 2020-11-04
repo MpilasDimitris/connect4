@@ -17,10 +17,9 @@
    </h1>
    </div>
 </header>
-<div>
   <form method="POST" style="height:410px;" class="register-form" name="register-form">
     <label for="username">Όνομα χρήστη</label>
-    <input  type="text" id="username" name="username" required pattern="^[a-zA-ZΑ-Ωα-ω]+$" placeholder="Όνομα χρήστη...">
+    <input  type="text" id="username" name="username" required pattern="([a-zA-Z0-9]){3,}" placeholder="Όνομα χρήστη...">
     <label style="display:none" for="username" class="error-username"></label>
     <label for="password1">Κωδικός πρόσβασης</label>
     <input type="password" id="password1" name="password1" required pattern="(?=.*\d)(?=.*[a-zα-ω])(?=.*[A-ZΑ-Ω]).{8,}" placeholder="Κωδικός...">
@@ -33,11 +32,9 @@
                Έχετε ήδη λογαριασμό; <a href="login.php">Επιστροφή για σύνδεση!</a>
               </small>
   </form>
-  <p id="error" style="display: none;">asdassd</p>
 </div>
 </form>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="js/register.js"></script>
 </body>
 </html>

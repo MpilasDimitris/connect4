@@ -19,10 +19,12 @@
 </header>
 <div>
   <form class="login-form">
-    <label for="fname">Όνομα χρήστη</label>
+    <label for="username">Όνομα χρήστη</label>
     <input type="text" id="username" name="username" placeholder="Όνομα χρήστη...">
-    <label for="lname">Κωδικός πρόσβασης</label>
-    <input type="text" id="password" name="password" placeholder="Κωδικός...">
+    <label style="display:none" for="username" class="error-username"></label>
+    <label for="password">Κωδικός πρόσβασης</label>
+    <input type="password" id="password" name="password" placeholder="Κωδικός...">
+    <label style="display:none" for="password" class="error-password"></label>
     <input type="submit" value="Σύνδεση" id="loginbtn">
     <small class="form-text">
                 Δεν έχετε λογαριασμό; <a href="register.php">Εγγραφτείτε τώρα δωρεάν!</a>
@@ -30,7 +32,7 @@
   </form>
 </div>
 </form>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.js"></script>
  <script src="js/login.js"></script>
 </body>
 </html>
