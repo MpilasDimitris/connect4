@@ -7,7 +7,6 @@ $("#username").blur(function(e) {
     if (username == '') {
         return;
     }
-
     $.ajax({
         url: 'doregister.php',
         type: "post",
@@ -25,8 +24,6 @@ $("#username").blur(function(e) {
             console.log("fail");
         }
     });
-
-
 });
 
 //validate input fields
@@ -40,7 +37,7 @@ $(document).ready(function() {
             let error = document.querySelector(`.error-${input}`);
             if (element.validity.valueMissing) {
                 error.style.display = 'block';
-                error.textContent = 'Υποχρεωτικό πεδίο';
+                error.textContent = 'Υποχρεωτικό πεδίο.';
             } else if (!element.checkValidity()) {
                 error.textContent = msg;
                 error.style.display = 'block';
@@ -49,9 +46,6 @@ $(document).ready(function() {
             }
         });
     }
-
-
-
     validate('username', "Μόνο γράμματα.", "keyup");
     validate('username', "Μόνο γράμματα.", "focus");
     validate("password1", "Πρέπει να έχει ένα νούμερο , ένα κεφαλαίο και ένα μικρό γράμμα , 8+ ", "keyup");
@@ -67,7 +61,6 @@ $('#registerbtn').on('click', function(e) {
     const password1 = document.getElementById("password1").value;
     const password2 = document.getElementById("password2").value;
     const username = document.getElementById("username").value;
-
 
     //New Confirm Password
 
