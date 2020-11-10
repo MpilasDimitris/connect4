@@ -6,7 +6,7 @@
     <title>Log In</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
 <header class="header">
@@ -17,8 +17,7 @@
    </h1>
    </div>
 </header>
-<div>
-  <form class="login-form">
+  <form method="POST" class="login-form">
     <label for="username">Όνομα χρήστη</label>
     <input type="text" id="username" name="username" placeholder="Όνομα χρήστη...">
     <label style="display:none" for="username" class="error-username"></label>
@@ -29,10 +28,11 @@
     <small class="form-text">
                 Δεν έχετε λογαριασμό; <a href="register.php">Εγγραφτείτε τώρα δωρεάν!</a>
               </small>
-  </form>
-</div>
-</form>
+              <small class="form-text">
+                Επιστροφή στην αρχική:  <a href="home.php">Αρχική</a>
+              </small>
+  </form> 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.js"></script>
- <script src="js/login.js"></script>
+ <script src="../js/login.js"></script>
 </body>
 </html>

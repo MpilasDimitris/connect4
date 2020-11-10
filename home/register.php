@@ -6,7 +6,7 @@
     <title>Sign In</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
 <header class="header">
@@ -31,10 +31,13 @@
     <small class="form-text">
                Έχετε ήδη λογαριασμό; <a href="login.php">Επιστροφή για σύνδεση!</a>
               </small>
+              <small class="form-text">
+                Επιστροφή στην αρχική:  <a href="home.php">Αρχική</a>
+              </small>
   </form>
 </div>
 </form>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.js"></script>
-<script src="js/register.js"></script>
+<script src="../js/register.js"></script>
 </body>
 </html>

@@ -12,16 +12,17 @@ body {
     font-size: 16px;
     line-height: 1.7px;
     color: #777;
-    padding: 10px;
+    padding: 5px;
+    display: block;
 }
 
 .header {
     height: 95vh;
-    background-image: linear-gradient(to right bottom, rgba(169, 169, 169, 0.664), rgba(32, 32, 32, 0.938)), url(imges/backgroundImage.jpg);
+    background-image: linear-gradient(rgba(169, 169, 169, 0.664), rgba(32, 32, 32, 0.938)), url(../imges/backgroundImage.jpg);
     background-size: cover;
     background-position: top;
     position: relative;
-    clip-path: polygon(0 0, 100% 0%, 100% 10vh, 0 50%);
+    clip-path: polygon(0 0, 100% 0%, 100% 20%, 0 20%);
 }
 
 .heading-primary {
@@ -29,7 +30,7 @@ body {
 }
 
 .heading-primary-main {
-    margin-top: 50px;
+    margin-top: 20px;
     display: block;
     font-size: 60px;
     font-weight: 400;
@@ -41,7 +42,7 @@ body {
 
 .heading-primary-sub {
     display: block;
-    padding-top: 8%;
+    padding-top: 1%;
     font-size: 20px;
     font-weight: 700px;
     letter-spacing: 8px;
@@ -52,7 +53,7 @@ body {
 
 .text-box {
     position: absolute;
-    top: 10%;
+    top: 0px;
     left: 5%;
     transform: translate(-5%, -5%);
 }
@@ -85,12 +86,11 @@ body {
     }
 }
 
-.login-form,
-.register-form {
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
     margin-top: -600px;
     left: 60%;
     margin-left: -100px;
-    height: 320px;
     width: 35%;
     position: fixed;
     border-radius: 5px;
@@ -101,12 +101,10 @@ body {
     animation-timing-function: ease-out;
 }
 
-
-/* .register-form {
-    margin-top: -600px;
-    left: 60%;
-    margin-left: -100px;
-    height: 320px;
+.second-card {
+    margin-top: -330px;
+    left: 10%;
+    margin-right: -100px;
     width: 35%;
     position: fixed;
     border-radius: 5px;
@@ -115,44 +113,4 @@ body {
     animation-name: moveInLeft;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
-} */
-
-input[type=text],
-input[type=password],
-select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 18px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 18px;
-}
-
-input[type=submit] {
-    width: 100%;
-    background-color: rgba(128, 128, 128, 0.842);
-    color: white;
-    padding: 14px 20px;
-    margin: 18px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-input[type=submit]:hover {
-    background-color: rgba(255, 0, 0, 0.562);
-}
-
-.error-username,
-.error-password1,
-.error-password {
-    width: 500px;
-    font-size: 16px;
-    color: red;
-    padding: 1px;
-    margin-left: 5px;
-    height: 20px;
 }

@@ -1,5 +1,5 @@
 <?php
-include 'dbconnect.php';
+include '../dbconnect.php';
 header('Content-type: application/json');
 session_start();
 
@@ -20,10 +20,10 @@ if($count==1){
   }
 
   $_SESSION['player_id'] = $id;
-
+  $_SESSION['username'] = $username;
 
   
-  print json_encode(array('success'=>'ok'));
+ print json_encode(array('success'=>'ok'));
   
 
 } else{
