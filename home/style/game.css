@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7px;
+    color: #777;
+    padding: 10px;
+    display: inline;
+    position: absolute;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#opponent-card .flip-card-inner .flip-card-back h5 {
+    transform: rotateX(180deg);
+}
+
+#opponent-card .flip-card-inner .card-body-front h6 {
+    transform: rotateX(180deg);
+    margin-top: 0px;
+}
+
+#opponent-card .flip-card-inner .card-body-front img {
+    transform: rotateX(180deg);
+}
+
+#my-card {
+    margin-left: 45%;
+    margin-top: 100px;
+    perspective: 1000px;
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
+}
+
+#opponent-card {
+    margin-left: 45%;
+    perspective: 1000px;
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
+    margin-top: 0px;
+    transform: rotatex(180deg);
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-body-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.game-table td {
+    border: 4px solid #2980b9;
+    width: 50px;
+    height: 50px;
+    border-left: 0px solid;
+}
+
+.game-table td:first-child {
+    font-weight: bold;
+    border-bottom: hidden;
+}
+
+.game-table {
+    text-align: center;
+    margin-left: 33%;
+    margin-top: 80px;
+    padding: 100px;
+    margin-bottom: 80px;
+}
+
+.chat-popup {
+    box-sizing: border-box;
+    margin-left: 80%;
+    margin-top: -700px;
+    position: absolute;
+}
+
+.open-button {
+    background-color: #555;
+    margin-top: -175px;
+    margin-left: 81%;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    width: 200px;
+    position: absolute;
+}
+
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+.form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+    min-height: 200px;
+}
+
+.form-container textarea:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.form-container .cancel {
+    background-color: red;
+}
+
+.form-container .btn:hover,
+.open-button:hover {
+    opacity: 1;
+}
+
+.chat-popup .form-container #chat-msg {
+    padding: 10px;
+    margin: 2px;
+}
+
+.highlight {
+    background-color: rgb(167, 161, 161);
+}
