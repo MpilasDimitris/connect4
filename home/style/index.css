@@ -130,6 +130,35 @@ input[type=submit]:hover {
     background-color: rgba(0, 0, 0, 0.562);
 }
 
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    margin-top: -600px;
+    left: 60%;
+    margin-left: -100px;
+    width: 35%;
+    position: fixed;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    animation-name: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+}
+
+.second-card {
+    margin-top: -330px;
+    left: 10%;
+    margin-right: -100px;
+    width: 35%;
+    position: fixed;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    animation-name: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+}
+
 .error-username,
 .error-password1,
 .error-password,

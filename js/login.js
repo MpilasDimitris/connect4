@@ -25,25 +25,57 @@ $('#loginbtn').on('click', function(e) {
     const password = document.getElementById('password');
     const error = document.querySelector('.error-password');
 
-    // function UserExists() {
-    //     error.style.display = 'block';
-    //     error.textContent = 'Δεν υπάρχει ο χρήστης.';
-    // }
-    $.ajax({
-        type: "POST",
-        url: "dologin.php",
-        data: {
-            username: username.value,
-            password: password.value
-        },
-        success: function() {
-            window.location = "game.php";
-        },
-        error: function() {
-            // UserExists();
-            error.style.display = 'block';
-            error.textContent = 'Δεν υπάρχει ο χρήστης.';
-        }
-    })
+
+    // $.ajax({
+    //     type: "POST",
+    //     url: "dologin.php",
+    //     data: {
+    //         username: username.value,
+    //         password: password.value,
+
+    //     },
+    //     success: function() {
+    //         $.ajax({
+    //             type: "GET",
+    //             url: "insert_to_room.php",
+    //             data: {
+    //                 username: username.value,
+    //             },
+    //             success: function() {
+    //                 window.location = "game.php";
+
+    //             }
+    //         })
+
+    //     },
+    //     error: function() {
+
+    //         error.style.display = 'block';
+    //         error.textContent = 'Δεν υπάρχει ο χρήστης.';
+    //     }
+    // })
+    sendMyAjax('dologin.php');
+    sendMyAjax('insert_to_room.php');
+
+    function sendMyAjax(URL_address) {
+        $.ajax({
+            type: 'POST',
+            url: URL_address,
+            data: {
+                username: username.value,
+                password: password.value,
+
+            },
+            success: function() {
+                window.location = "game.php";
+
+            },
+            error: function() {
+
+                error.style.display = 'block';
+                error.textContent = 'Δεν υπάρχει ο χρήστης.';
+            }
+        });
+    };
     e.preventDefault();
 });
