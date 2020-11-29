@@ -26,56 +26,28 @@ $('#loginbtn').on('click', function(e) {
     const error = document.querySelector('.error-password');
 
 
-    // $.ajax({
-    //     type: "POST",
-    //     url: "dologin.php",
-    //     data: {
-    //         username: username.value,
-    //         password: password.value,
 
-    //     },
-    //     success: function() {
-    //         $.ajax({
-    //             type: "GET",
-    //             url: "insert_to_room.php",
-    //             data: {
-    //                 username: username.value,
-    //             },
-    //             success: function() {
-    //                 window.location = "game.php";
 
-    //             }
-    //         })
 
-    //     },
-    //     error: function() {
+    $.ajax({
 
-    //         error.style.display = 'block';
-    //         error.textContent = 'Δεν υπάρχει ο χρήστης.';
-    //     }
-    // })
-    sendMyAjax('dologin.php');
-    sendMyAjax('insert_to_room.php');
+        url: "dologin.php",
+        type: "post",
+        data: {
+            username: username.value,
+            password: password.value,
 
-    function sendMyAjax(URL_address) {
-        $.ajax({
-            type: 'POST',
-            url: URL_address,
-            data: {
-                username: username.value,
-                password: password.value,
+        },
+        success: function() {
+            window.location = "game.php";
 
-            },
-            success: function() {
-                window.location = "game.php";
+        },
+        error: function() {
 
-            },
-            error: function() {
+            error.style.display = 'block';
+            error.textContent = 'Δεν υπάρχει ο χρήστης.';
+        }
+    });
 
-                error.style.display = 'block';
-                error.textContent = 'Δεν υπάρχει ο χρήστης.';
-            }
-        });
-    };
     e.preventDefault();
 });

@@ -1,12 +1,13 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['player'])) {
+if (!isset($_SESSION['username'])) {
 
     // Redirect them to the login page
-    header("Location: insert_to_room.php");
+    header("Location: login.php");
 }
-echo $_SESSION['player'];
+echo $_SESSION['username'];
+echo $_SESSION['player_id'];
 
 ?> 
 
