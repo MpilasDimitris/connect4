@@ -6,8 +6,9 @@ if (!isset($_SESSION['username'])) {
     // Redirect them to the login page
     header("Location: login.php");
 }
-echo $_SESSION['username'];
+echo $_SESSION['player'];
 echo $_SESSION['player_id'];
+
 
 ?> 
 
@@ -27,7 +28,7 @@ echo $_SESSION['player_id'];
   <div class="flip-card-inner">
   <div class="card-body-front">
   <img class="card-img-top" src="imges/user_image.png" alt="Card image cap">
-    <h6 id="opponent">Waiting for opponent...</h6>
+    <h6 id="opponent">Αναζήτηση αντιπάλου...</h6>
   </div>
   <div class="flip-card-back">
   <h6>0</h6>
@@ -43,7 +44,9 @@ echo $_SESSION['player_id'];
     <h5 class="card-title">Σχετικα με το παιχνιδι</h5>
     <p class="card-text"><?php echo file_get_contents('rules.txt') ?></p>
   </div>
-  </div>
+  </div> 
+  <button type="button" class="start-btn">Ξεκίνα</button>
+  <img class="start-loader"  src="imges/start-loader.gif">
 <div class="card" id="my-card" style="width: 8rem;">
 <div class="flip-card-inner">
 <div class="card-body-front">
@@ -59,12 +62,13 @@ echo $_SESSION['player_id'];
 </div>
 <button class="logOut-button" >Αποσύνδεση</button>
 <button class="open-button">Συζήτηση</button>
+
 <div style="display: block;" class="chat-popup" id="myForm">
-  <form method="GET" class="form-container">
+  <form  class="form-container">
     <label for="msg"><b>Μήνυμα</b></label>
-    <div class="chat"  name="msg" ></div>
+    <div style="height:250px;" class="chat"  name="msg" ></div>
     <input type="text" name="chat-msg" id="chat-msg" placeholder="Γράψε μήνυμα">
-    <button type="submit" class="btn">Στείλε</button>
+    <button type="button" id="send-msg" class="btn">Στείλε</button>
   </form>
 </div>
 </div>

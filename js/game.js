@@ -75,7 +75,7 @@ function logout() {
     })
 }
 
-// Check if session is set or not || if not,redirect to index.php
+// Check if session is set or not || if not,redirect to home.php
 $(window).on("load", function() {
     $.ajax({
         url: "check_session.php",
@@ -87,11 +87,9 @@ $(window).on("load", function() {
 
 })
 
-
-
 function show_opponent() {
     if (
-        document.getElementById("opponent").innerHTML == "Waiting for opponent..."
+        document.getElementById("opponent").innerHTML == "Αναζήτηση αντιπάλου..."
     ) {
         setInterval(function() {
             $("#opponent")
@@ -99,4 +97,108 @@ function show_opponent() {
                 .fadeIn("slow");
         }, 3000);
     }
+}
+
+
+$('#send-msg').click(function(e) {
+
+    const msg = document.getElementById('chat-msg');
+
+    if (msg.value != '') {
+        $.ajax({
+            method: "POST",
+            url: '../score4.php/chat',
+            data: {
+                msg: msg.value
+            }
+        });
+
+    }
+    msg.value = '';
+
+    e.preventDefault();
+});
+
+
+
+function fetch_chat() {
+
+    $.ajax({
+        url: '../score4.php/chat',
+        method: 'GET',
+        dataType: "json",
+        success: function(data) {
+            //data = JSON.parse(data);
+            if (data !== null) {
+
+                const list_chat = document.querySelector('.chat');
+                let output = '';
+
+                data.forEach(function(chat) {
+                    output += `
+                    <h6>${chat.username} : <small>${chat.msg}</small></h6>
+                    <small>${chat.m_date}</small>`
+                    list_chat.innerHTML = output;
+
+                })
+            }
+        }
+    })
+}
+
+
+var chat = $(".chat");
+var chatHeight = chat.innerHeight();
+var chatIsAtBottom = true;
+
+
+function newMessage() {
+    chat.append(fetch_chat());
+    if (chatIsAtBottom) {
+        chat.animate({
+            scrollTop: chat[0].scrollHeight - chatHeight
+        }, 400);
+
+    }
+}
+
+function checkBottom() {
+    chatIsAtBottom = chat[0].scrollTop + chatHeight >= chat[0].scrollHeight;
+}
+
+chat.scrollTop(chat[0].scrollHeight).on("scroll", checkBottom);
+setInterval(newMessage, 1000);
+
+
+
+$('.start-btn').on('click', function() {
+    $.ajax({
+        url: '../score4.php/check_status',
+        type: 'POST',
+        success: function() {
+            $(".start-loader").css("display", "block");
+            $(".start-btn").css("display", "none");
+        },
+
+        // error: function() {
+        //     $(".start-loader").css("display", "block");
+        //     $(".start-btn").css("display", "none");
+        // }
+
+    })
+})
+
+setInterval(function() {
+    checkStatus();
+}, 4000);
+
+function checkStatus() {
+    $.ajax({
+        url: '../score4.php/check_status',
+        method: 'GET',
+        success: function() {
+            $(".start-btn").css("display", "block");
+        },
+
+    })
 }

@@ -176,6 +176,17 @@ body {
     margin: 2px;
 }
 
+.chat:hover {
+    overflow-y: scroll;
+}
+
+.chat {
+    width: 200px;
+    height: 300px;
+    background: #eee;
+    overflow: hidden;
+}
+
 .highlight {
     background-color: rgb(167, 161, 161);
 }
@@ -198,4 +209,26 @@ body {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+}
+
+.start-btn {
+    background-color: #4CAF50;
+    margin-top: 5px;
+    margin-left: 43%;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    width: 150px;
+    position: absolute;
+    display: none;
+}
+
+.start-loader {
+    margin-top: 5px;
+    margin-left: 48%;
+    display: block;
+    position: absolute;
+    display: none;
 }
