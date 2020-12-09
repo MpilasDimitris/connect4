@@ -172,33 +172,39 @@ setInterval(newMessage, 1000);
 
 
 $('.start-btn').on('click', function() {
+    $(".start-btn").css("display", "none");
+    $(".start-loader").css("display", "block");
     $.ajax({
         url: '../score4.php/check_status',
         type: 'POST',
         success: function() {
-            $(".start-loader").css("display", "block");
-            $(".start-btn").css("display", "none");
+
+            $(".start-loader").css("display", "block")
         },
 
-        // error: function() {
-        //     $(".start-loader").css("display", "block");
-        //     $(".start-btn").css("display", "none");
-        // }
+        error: function() {
+
+            $(".start-loader").css("display", "block");
+
+        }
 
     })
 })
 
 setInterval(function() {
     checkStatus();
-}, 4000);
+}, 1000);
 
 function checkStatus() {
     $.ajax({
         url: '../score4.php/check_status',
         method: 'GET',
         success: function() {
-            $(".start-btn").css("display", "block");
+            $(".start-loader").css("display", "none");
+            $(".start-btn").css("display", "none");
+
         },
+
 
     })
 }

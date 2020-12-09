@@ -222,7 +222,6 @@ body {
     opacity: 0.8;
     width: 150px;
     position: absolute;
-    display: none;
 }
 
 .start-loader {
