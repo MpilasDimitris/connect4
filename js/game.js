@@ -1,8 +1,8 @@
 $(function() {
     createTable();
     show_opponent();
+    show_turn();
 })
-
 
 $('.open-button').on('click', function() {
     let button = document.getElementById("myForm").style.display;
@@ -24,15 +24,6 @@ $(document).ready(function() {
         $(this).closest('table').find('.myCell:nth-child(' + ($(this).index() + 1) + ')').removeClass('highlight');
     });
 });
-$('.myCell').on('click', function() {
-    $(this).closest('td').addClass('highlight');
-    $(this).closest('table').find('.myCell:nth-child(' + ($(this).index() + 1) + ')').addClass('highlight');
-    console.log(this);
-});
-$('.myCell').on('mouseout', function() {
-    $(this).closest('td').removeClass('highlight');
-    $(this).closest('table').find('.myCell:nth-child(' + ($(this).index() + 1) + ')').removeClass('highlight');
-});
 
 function createTable() {
     var table = '<table class="game-table">'
@@ -51,7 +42,6 @@ function createTable() {
     $('.game').html(table);
 }
 
-
 //logout button
 $('.logOut-button').click(function(e) {
     e.preventDefault();
@@ -59,7 +49,6 @@ $('.logOut-button').click(function(e) {
     if (confLogOut) {
         logout();
     }
-
 });
 
 //logout function
@@ -84,7 +73,6 @@ $(window).on("load", function() {
             window.location = "home.php";
         }
     })
-
 })
 
 function show_opponent() {
@@ -95,10 +83,9 @@ function show_opponent() {
             $("#opponent")
                 .load("../home/show_opponent.php")
                 .fadeIn("slow");
-        }, 3000);
+        }, 5000);
     }
 }
-
 
 $('#send-msg').click(function(e) {
 
@@ -112,17 +99,12 @@ $('#send-msg').click(function(e) {
                 msg: msg.value
             }
         });
-
     }
     msg.value = '';
-
     e.preventDefault();
 });
 
-
-
 function fetch_chat() {
-
     $.ajax({
         url: '../score4.php/chat',
         method: 'GET',
@@ -130,27 +112,22 @@ function fetch_chat() {
         success: function(data) {
             //data = JSON.parse(data);
             if (data !== null) {
-
                 const list_chat = document.querySelector('.chat');
                 let output = '';
-
                 data.forEach(function(chat) {
                     output += `
                     <h6>${chat.username} : <small>${chat.msg}</small></h6>
                     <small>${chat.m_date}</small>`
                     list_chat.innerHTML = output;
-
                 })
             }
         }
     })
 }
 
-
 var chat = $(".chat");
 var chatHeight = chat.innerHeight();
 var chatIsAtBottom = true;
-
 
 function newMessage() {
     chat.append(fetch_chat());
@@ -158,7 +135,6 @@ function newMessage() {
         chat.animate({
             scrollTop: chat[0].scrollHeight - chatHeight
         }, 400);
-
     }
 }
 
@@ -169,8 +145,6 @@ function checkBottom() {
 chat.scrollTop(chat[0].scrollHeight).on("scroll", checkBottom);
 setInterval(newMessage, 1000);
 
-
-
 $('.start-btn').on('click', function() {
     $(".start-btn").css("display", "none");
     $(".start-loader").css("display", "block");
@@ -178,19 +152,13 @@ $('.start-btn').on('click', function() {
         url: '../score4.php/check_status',
         type: 'POST',
         success: function() {
-
             $(".start-loader").css("display", "block")
         },
-
         error: function() {
-
             $(".start-loader").css("display", "block");
-
         }
-
     })
 })
-
 setInterval(function() {
     checkStatus();
 }, 1000);
@@ -202,9 +170,109 @@ function checkStatus() {
         success: function() {
             $(".start-loader").css("display", "none");
             $(".start-btn").css("display", "none");
+            $("#select-box").css("display", "block");
+            $("#play-btn").css("display", "block");
+            $("#select-box-lbl").css("display", "block");
+            fetch_board();
+            show_turn();
+        },
+        error: function() {
+            $(".start-btn").css("display", "block");
+            $("#select-box").css("display", "none");
+            $("#play-btn").css("display", "none");
+            $("#select-box-lbl").css("display", "none");
+            fetch_board();
+        }
+    })
+}
+
+function fetch_board() {
+    $.ajax({
+        url: "../score4.php/board/fetch",
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                var id = 'square_' + item.x + ',' + item.y;
+                if (item.piece_color === 'R') {
+                    document.getElementById(id).style.backgroundColor = 'red';
+                } else if (item.piece_color === 'G') {
+                    document.getElementById(id).style.backgroundColor = '#7FFF00';
+                } else {
+                    document.getElementById(id).style.backgroundColor = 'white';
+                }
+            }
+        }
+    })
+}
+$('#play-btn').on('click', function() {
+    document.getElementById("play-btn").disabled = true;
+    switch_turn();
+    show_turn();
+    var select = document.getElementById('select-box');
+    console.log(select.value);
+
+    $.ajax({
+        url: "../score4.php/board/send",
+        method: "POST",
+        data: {
+            select: select.value,
+        },
+        success: function() {
+            fetch_board();
 
         },
+    })
+})
 
+function show_turn() {
+    $.ajax({
+        url: "../score4.php/board/show_turn",
+        method: "GET",
+        success: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                var array = data[i];
+                var turn = array.turn;
+                var name = array.username;
+                if (turn === 'player1') {
+                    document.getElementById('show-turn').display = 'block';
+                    document.getElementById('show-turn').innerHTML = 'Σειρά έχει ο/η ' + name;
+                    document.getElementById('show-turn').style.backgroundColor = '#00FF00';
+                } else {
+                    document.getElementById('show-turn').display = 'block';
+                    document.getElementById('show-turn').innerHTML = 'Σειρά έχει ο/η ' + name;
+                    document.getElementById('show-turn').style.backgroundColor = '#ff1a1a';
+                }
+            }
+        }
+    })
+}
 
+// function play_btn() {
+//     $.ajax({
+//         url: "../score4.php/board/play_btn",
+//         method: "GET",
+//         success: function(data) {
+//             for (var i = 0; i < data.length; i++) {
+//                 var array = data[i];
+//                 var turn = array.turn;
+//                 var name = array.username;
+//                 var player = arra.player;
+//                 if (turn === player) {
+//                     document.getElementById("play-btn").disabled = false;
+//                 } else {
+//                     document.getElementById("play-btn").disabled = false;
+//                 }
+//             }
+//         }
+//     })
+// }
+
+function switch_turn() {
+    $.ajax({
+        url: '../score4.php/board/switch_turn',
+        method: 'POST',
+        dataType: 'json',
     })
 }

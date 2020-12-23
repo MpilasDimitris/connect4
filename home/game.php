@@ -10,6 +10,7 @@ echo $_SESSION['player'];
 echo $_SESSION['player_id'];
 
 
+
 ?> 
 
 <!DOCTYPE html>
@@ -45,7 +46,19 @@ echo $_SESSION['player_id'];
     <p class="card-text"><?php echo file_get_contents('rules.txt') ?></p>
   </div>
   </div> 
-  <button type="button" class="start-btn">Ξεκίνα</button>
+  <button type="button" class="start-btn">Έναρξη</button>
+  <select id="select-box" class="mdb-select md-form colorful-select dropdown-primary">
+  <option value="1">Στήλη 1</option>
+  <option value="2">Στήλη 2</option>
+  <option value="3">Στήλη 3</option>
+  <option value="4">Στήλη 4</option>
+  <option value="5">Στήλη 5</option>
+  <option value="6">Στήλη 6</option>
+  <option value="7">Στήλη 7</option>
+</select>
+<label style="display: block;" id="show-turn" class="mdb-main-label"></label>
+<label id="select-box-lbl" class="mdb-main-label">Επέλεξε στήλη</label>
+<button type="button" id="play-btn">Παίξε</button>
   <img class="start-loader"  src="imges/start-loader.gif">
 <div class="card" id="my-card" style="width: 8rem;">
 <div class="flip-card-inner">
@@ -56,7 +69,7 @@ echo $_SESSION['player_id'];
   </div>
   <div class="flip-card-back">
   <h5>Νίκες</h5>
-  <h6 ><?php $wins;?></h6>
+  <h6 ><?php ?></h6>
   </div>
   </div>
 </div>
