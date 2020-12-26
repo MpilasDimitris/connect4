@@ -6,9 +6,10 @@ if (!isset($_SESSION['username'])) {
     // Redirect them to the login page
     header("Location: login.php");
 }
-echo $_SESSION['player'];
-echo $_SESSION['player_id'];
-
+echo 'turn : '.$_SESSION['player'];
+echo 'player id :'.$_SESSION['player_id'];  
+echo 'session id : ' . (int)session_id();
+echo 'wins : ' . $_SESSION['wins'];
 
 
 ?> 
@@ -32,7 +33,7 @@ echo $_SESSION['player_id'];
     <h6 id="opponent">Αναζήτηση αντιπάλου...</h6>
   </div>
   <div class="flip-card-back">
-  <h6>0</h6>
+  <h6 id="oppWins">0</h6>
   <h5>Νίκες</h5>
   </div>
 </div>
@@ -42,11 +43,11 @@ echo $_SESSION['player_id'];
 <div class="card second-card">
 <h5 class="card-header">Κανόνες</h5>
   <div class="card-body">
-    <h5 class="card-title">Σχετικα με το παιχνιδι</h5>
+    <h5 class="card-title">Σχετικά με το παιχνίδι</h5>
     <p class="card-text"><?php echo file_get_contents('rules.txt') ?></p>
   </div>
-  </div> 
-  <button type="button" class="start-btn">Έναρξη</button>
+  </div>
+  <button type="button" style="display: none;" class="start-btn">Έναρξη</button>
   <select id="select-box" class="mdb-select md-form colorful-select dropdown-primary">
   <option value="1">Στήλη 1</option>
   <option value="2">Στήλη 2</option>
@@ -68,8 +69,8 @@ echo $_SESSION['player_id'];
       echo ($_SESSION['username']);?></h6>
   </div>
   <div class="flip-card-back">
-  <h5>Νίκες</h5>
-  <h6 ><?php ?></h6>
+  <h6>Νίκες</h6>
+  <h6 id="yourWins"><?php echo ($_SESSION['wins']); ?></h6>
   </div>
   </div>
 </div>

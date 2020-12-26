@@ -167,20 +167,28 @@ function checkStatus() {
     $.ajax({
         url: '../score4.php/check_status',
         method: 'GET',
+        dataType: 'json',
         success: function() {
             $(".start-loader").css("display", "none");
             $(".start-btn").css("display", "none");
             $("#select-box").css("display", "block");
             $("#play-btn").css("display", "block");
             $("#select-box-lbl").css("display", "block");
+            $("#show-turn").css("display", "block");
             fetch_board();
             show_turn();
+            play_btn();
         },
         error: function() {
-            $(".start-btn").css("display", "block");
+            if (document.getElementById("opponent").innerHTML == "Αναζήτηση αντιπάλου...") {
+                $(".start-btn").css("display", "none");
+            } else {
+                $(".start-btn").css("display", "block");
+            }
             $("#select-box").css("display", "none");
             $("#play-btn").css("display", "none");
             $("#select-box-lbl").css("display", "none");
+            $("#show-turn").css("display", "none");
             fetch_board();
         }
     })
@@ -249,25 +257,7 @@ function show_turn() {
     })
 }
 
-// function play_btn() {
-//     $.ajax({
-//         url: "../score4.php/board/play_btn",
-//         method: "GET",
-//         success: function(data) {
-//             for (var i = 0; i < data.length; i++) {
-//                 var array = data[i];
-//                 var turn = array.turn;
-//                 var name = array.username;
-//                 var player = arra.player;
-//                 if (turn === player) {
-//                     document.getElementById("play-btn").disabled = false;
-//                 } else {
-//                     document.getElementById("play-btn").disabled = false;
-//                 }
-//             }
-//         }
-//     })
-// }
+
 
 function switch_turn() {
     $.ajax({

@@ -26,6 +26,10 @@ body {
     transform: rotateX(180deg);
 }
 
+#opponent-card .flip-card-inner .flip-card-back h6 {
+    transform: rotateX(180deg);
+}
+
 #opponent-card .flip-card-inner .card-body-front h6 {
     transform: rotateX(180deg);
     margin-top: 0px;
@@ -222,6 +226,7 @@ body {
     opacity: 0.8;
     width: 150px;
     position: absolute;
+    display: none;
 }
 
 .start-loader {
@@ -230,4 +235,40 @@ body {
     display: block;
     position: absolute;
     display: none;
+}
+
+#select-box {
+    margin-top: 25px;
+    margin-left: 43%;
+    display: block;
+    position: absolute;
+    display: none;
+}
+
+#select-box-lbl {
+    margin-top: 1px;
+    margin-left: 43%;
+    display: block;
+    position: absolute;
+    display: none;
+}
+
+#play-btn {
+    background-color: #4CAF50;
+    margin-top: 5px;
+    margin-left: 53%;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    width: 150px;
+    position: absolute;
+    display: none;
+}
+
+#show-turn {
+    margin-left: 48%;
+    margin-top: -20px;
+    position: absolute;
 }

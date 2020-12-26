@@ -23,23 +23,19 @@ if($count==1){
 
       switch ($_SESSION['status']) {
         case 'initialized':
-            header("HTTP/1.1 500 Internal Server Error"); 
           break;
         case 'waiting':
             $stmt = $mysqli->prepare("UPDATE `status_turn` SET  `turn`='player1' WHERE `status`='waiting'  ");
                 $stmt->execute();
           break;
         case 'started':
-            print json_encode($result->fetch_all(MYSQLI_ASSOC),JSON_PRETTY_PRINT);
+            print json_encode($result->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
           break;
         default:
         header("HTTP/1.1 500 Internal Server Error"); 
       }
-    
+      
 }
-
-
-
 }
 
 
