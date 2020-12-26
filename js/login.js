@@ -45,7 +45,7 @@ $('#loginbtn').on('click', function(e) {
         error: function() {
 
             error.style.display = 'block';
-            error.textContent = 'Δεν υπάρχει ο χρήστης.';
+            error.textContent = 'Δεν υπάρχει ο χρήστης ή ένα παιχνίδι είναι σε εξέλιξη δοκίμασε σε λίγο.';
         }
     });
 
