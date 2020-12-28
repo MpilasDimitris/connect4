@@ -31,6 +31,8 @@ if($count==1){
         case 'started':
             print json_encode($result->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
           break;
+         case 'ended':
+          break;
         default:
         header("HTTP/1.1 500 Internal Server Error"); 
       }

@@ -2,6 +2,7 @@ $(function() {
     createTable();
     show_opponent();
     show_turn();
+    fetch_my_wins();
 })
 
 $('.open-button').on('click', function() {
@@ -69,6 +70,7 @@ $(window).on("load", function() {
     $.ajax({
         url: "check_session.php",
         type: "GET",
+        dataType: 'json',
         error: function() {
             window.location = "home.php";
         }
@@ -81,9 +83,9 @@ function show_opponent() {
     ) {
         setInterval(function() {
             $("#opponent")
-                .load("../home/show_opponent.php")
+                .load("../score4.php/board/show_opponent")
                 .fadeIn("slow");
-        }, 5000);
+        }, 4000);
     }
 }
 
@@ -95,6 +97,7 @@ $('#send-msg').click(function(e) {
         $.ajax({
             method: "POST",
             url: '../score4.php/chat',
+            dataType: 'json',
             data: {
                 msg: msg.value
             }
@@ -146,11 +149,13 @@ chat.scrollTop(chat[0].scrollHeight).on("scroll", checkBottom);
 setInterval(newMessage, 1000);
 
 $('.start-btn').on('click', function() {
+    var s = 1;
     $(".start-btn").css("display", "none");
     $(".start-loader").css("display", "block");
     $.ajax({
         url: '../score4.php/check_status',
         type: 'POST',
+        dataType: 'json',
         success: function() {
             $(".start-loader").css("display", "block")
         },
@@ -214,8 +219,9 @@ function fetch_board() {
         }
     })
 }
+
 $('#play-btn').on('click', function() {
-    document.getElementById("play-btn").disabled = true;
+
     switch_turn();
     show_turn();
     var select = document.getElementById('select-box');
@@ -224,6 +230,7 @@ $('#play-btn').on('click', function() {
     $.ajax({
         url: "../score4.php/board/send",
         method: "POST",
+        dataType: 'json',
         data: {
             select: select.value,
         },
@@ -235,19 +242,22 @@ $('#play-btn').on('click', function() {
 })
 
 function show_turn() {
+
     $.ajax({
         url: "../score4.php/board/show_turn",
         method: "GET",
+        dataType: 'json',
         success: function(data) {
             for (var i = 0; i < data.length; i++) {
                 var array = data[i];
+                var player = array.player;
                 var turn = array.turn;
                 var name = array.username;
-                if (turn === 'player1') {
+                if (turn === 'player1' && player === 'player1') {
                     document.getElementById('show-turn').display = 'block';
                     document.getElementById('show-turn').innerHTML = 'Σειρά έχει ο/η ' + name;
                     document.getElementById('show-turn').style.backgroundColor = '#00FF00';
-                } else {
+                } else if (turn == 'player2' && player === 'player2') {
                     document.getElementById('show-turn').display = 'block';
                     document.getElementById('show-turn').innerHTML = 'Σειρά έχει ο/η ' + name;
                     document.getElementById('show-turn').style.backgroundColor = '#ff1a1a';
@@ -257,6 +267,19 @@ function show_turn() {
     })
 }
 
+function play_btn() {
+    $.ajax({
+        url: "../score4.php/board/play_btn",
+        method: "GET",
+        dataType: 'json',
+        success: function() {
+            document.getElementById("play-btn").disabled = false;
+        },
+        error: function() {
+            document.getElementById("play-btn").disabled = true;
+        }
+    })
+}
 
 
 function switch_turn() {
@@ -264,5 +287,78 @@ function switch_turn() {
         url: '../score4.php/board/switch_turn',
         method: 'POST',
         dataType: 'json',
+    })
+}
+
+
+$(document).ready(function() {
+
+    if (
+        document.getElementById("oppWins").innerHTML == "0"
+    ) {
+        setInterval(function() {
+            $("#oppWins")
+                .load('../score4.php/board/fetch_wins')
+                .fadeIn('slow');
+        }, 5000);
+    }
+})
+
+
+
+setInterval(function() {
+    check_win();
+}, 1000);
+
+function check_win() {
+    $.ajax({
+        url: '../score4.php/board/check_win',
+        method: 'GET',
+        dataType: 'json',
+        success: function() {
+            show_winner();
+        }
+    })
+}
+
+
+
+function show_winner() {
+    $.ajax({
+        url: '../score4.php/board/show_winner',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                var array = data[i];
+                var name = array.username;
+            }
+            $.ajax({
+                url: '../score4.php/board/insert_wins',
+                method: 'POST',
+                data: { name: name },
+                success: function() {
+                    fetch_my_wins();
+                }
+            })
+        }
+    })
+}
+
+
+
+function fetch_my_wins() {
+    $.ajax({
+        url: '../score4.php/board/fetch_my_wins',
+        method: 'GET',
+        success: function() {
+            if (
+                document.getElementById('yourWins').innerHTML = '0'
+            ) {
+                $("#yourWins")
+                    .load('../score4.php/board/fetch_my_wins')
+                    .fadeIn('slow');
+            }
+        }
     })
 }

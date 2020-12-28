@@ -1,4 +1,5 @@
 <?php
+function show_opponent(){
 require 'dbconnect.php';
 session_start();
 //an eisai o player1 tote deikse san antipalo to onoma tou player2
@@ -11,7 +12,7 @@ if($_SESSION['player']=="player1"){
     $_SESSION['oppnickname'] = $row['username'];
     echo $row['username'];
     }else{
-        echo "Waiting for opponent...";
+        echo "Αναζήτηση αντιπάλου...";
     }
 }else{
     $stmt2 = $mysqli->prepare("SELECT username FROM `users` where player='player1'");
@@ -22,6 +23,7 @@ if($_SESSION['player']=="player1"){
     $_SESSION['oppnickname'] = $row['username'];
     echo $row['username'];
 } else{
-    echo "Waiting for opponent...";
+    echo "Αναζήτηση αντιπάλου...";
+}
 }
 }
