@@ -17,7 +17,7 @@
         <li><a href="#prerequisites">Προαπαιτούμενες τεχνολογίες</a></li>
       </ul>
     </li>
-    <li><a href="#contributing">Συντελεστές</a></li>
+    <li><a href="#Συντελεστές">Συντελεστές</a></li>
      <li>
       <a href="#about-api">Περιγραφή API</a>
       <ul>
