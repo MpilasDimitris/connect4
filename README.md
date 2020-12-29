@@ -6,14 +6,15 @@
     <li>
       <a href="#about-the-project">Σχετικά με το παιχνίδι</a>
       <ul>
-        <li><a href="#built-with">Τεχνολογίες που χρησιμοποιήθηκαν</a></li>
+	 <li><a href="#built-with">Η βάση</a></li>
+	      <li><a href="#built-with">Τεχνολογίες που χρησιμοποιήθηκαν</a></li>
+        <li><a href="#built-with">Περιγραφή του παιχνιδιού</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Αρχικά</a>
       <ul>
         <li><a href="#prerequisites">Προαπαιτούμενες τεχνολογίες</a></li>
-        <li><a href="#installation">Εγκατάσταση</a></li>
       </ul>
     </li>
     <li><a href="#contributing">Συντελεστές</a></li>
@@ -40,37 +41,37 @@
 ## H βάση
 Στη βάση υπάρχουν   4 πίνακες οι οποίοι φαίνονται παρακάτω.
 # users
-| Όνομα  | Τύπος | 
-| ------------- | ------------- |
-| player_id | int  |
-| username  | varchar  |
-| password  | varchar  |
-| wins  | int  |
-| player  | text  |
-| piece_color  | enum('R','G')  |
+| Όνομα  | Τύπος | Περιγραφή | 
+| ------------- | ------------- | ------------- | 
+| player_id | int  | το id του κάθε παίκτη | 
+| username  | varchar  | το όνομα του παίκτη |
+| password  | varchar  | ο κωδικός πρόσβασης |
+| wins  | int  | νίκες του κάθε παίκτη |
+| player  | text  | καθορίζει τη σειρά του παίκτη (player1/player2) |
+| piece_color  | enum('R','G')  | το χρώμα για το πιόνι |
 
 # board
-| Όνομα  | Τύπος | 
-| ------------- | ------------- |
-| x | int  |
-| y  | int  |
-| piece_color  | enum('R','G')  |
+| Όνομα  | Τύπος | Περιγραφή |
+| ------------- | ------------- |------------- | 
+| x | int  | η συντεταγμένη χ του τετραγώνου για τις γραμμές (1..6) |
+| y  | int  | η συντεταγμένη χ του τετραγώνου για τις στήλες (1..7) |
+| piece_color  | enum('R','G')  | το χρώμα που τοποθετείται σε κάθε τετράγωνο |
 
 # chat
-| Όνομα  | Τύπος | 
-| ------------- | ------------- |
-| p_id | int  |
-| m_id  | int  |
-| msg  | varchar  |
-| m_date  | timestamp  |
+| Όνομα  | Τύπος | Περιγραφή |
+| ------------- | ------------- | ------------- | 
+| p_id | int  | το id του παίκτη που έγραψε το μήνυμα |
+| m_id  | int  | το id του μηνύματος |
+| msg  | varchar  | το κείμενο του μηνύματος |
+| m_date  | timestamp  | η ημερομηνία και η ώρα του μηνύματος |
 
 # status_turn
-| Όνομα  | Τύπος | 
-| ------------- | ------------- |
-| status | varchar  |
-| turn  | varchar  |
-| result  | varchar  |
-| last_change  | timestamp  |
+| Όνομα  | Τύπος | Περιγραφή |
+| ------------- | ------------- | ------------- | 
+| status | varchar  | η κατάσταση του παιχνιδιού (initialize,waiting,started,ended) |
+| turn  | varchar  | η σειρά του παίκτη (player1,player2) |
+| result  | varchar  | το ποιος νίκησε (R,G) |
+| last_change  | timestamp  | ο χρόνος αλλαγής κατάστασης |
 
 # Περιγραφή του παιχνιδιού
 
@@ -113,12 +114,7 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE20_154594
 * Mysql Server
 * php
 
-### Εγκατάσταση
-
-Οδηγίες εγκατάστασης
-<!-- CONTRIBUTING -->
-## Συντελεστές
-
+# Συντελεστές
 Το παρόν project δημιουργήθηκε αποκλειστικά από τον προγραμματιστή Μπίλας Δημήτρης
 
 <!-- LICENSE -->
