@@ -15,7 +15,7 @@ while($row = $result->fetch_array()){
   }
   $_SESSION['piece_color'] = $piece;
 
-if($_SESSION['player']=='player1' && $_SESSION['piece_color']=='G'){
+  if($_SESSION['player']=='player1'){
 $stmt = $mysqli->prepare("UPDATE `board`
 SET `piece_color` = 'G'
 WHERE `y`=$select and `piece_color` ='' 
