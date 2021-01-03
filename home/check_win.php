@@ -39,7 +39,7 @@ if ($rc == 0 && $gc == 0) {
             $rc=0;
             $gc++;
     }
-        elseif($board[$i][$j]['piece_color']=='R' || $board[$i][$j]['piece_color']=='G'){
+        elseif($board[$i][$j]['piece_color']!='R' || $board[$i][$j]['piece_color']!='G'){
             $rc=0;
             $gc=0;
     }
@@ -52,7 +52,6 @@ if ($rc == 0 && $gc == 0) {
                         $rc = 0;
                     }}}
 
-//elegxos gia katheta apo katw pros ta panw
 if ($rc == 0 && $gc == 0) {
     for ($i = 7; $i >= 1; $i--) {
         for ($j = 6; $j >= 1; $j--) {
@@ -79,7 +78,6 @@ if ($rc == 0 && $gc == 0) {
 }
 
 
- //elegxos gia diagonia 6,1-6,4
  if ($rc == 0 && $gc == 0) {
     $k = 6;
     for ($m = 1; $m <= 4; $m++) {
@@ -130,7 +128,6 @@ if ($rc == 0 && $gc == 0) {
     }
 }
 
-//elegxos gia diagonia 6,7-6,4
 if ($rc == 0 && $gc == 0) {
     $k = 6;
     for ($m = 7; $m >= 4; $m--) {
@@ -182,7 +179,6 @@ if ($rc == 0 && $gc == 0) {
     }
 }
 
-//elegos gia diagonia 5,1-4,1
 if ($rc == 0 && $gc == 0) {
     $m = 1;
     for ($k = 5; $k >= 4; $k--) {
@@ -223,7 +219,6 @@ if ($rc == 0 && $gc == 0) {
     }
 }
 
-//elegxos gia diagonia 5,7-4,7
 if ($rc == 0 && $gc == 0) {
     $m = 7;
     for ($k = 5; $k >= 4; $k--) {
@@ -266,7 +261,6 @@ if ($rc == 0 && $gc == 0) {
 
 
 
-//elegxos gia to poios paikths kerdise kai enhmerwsh ths katastash tou paixnidiou
 if ($rc == 4) {
 
     $sql = "update status_turn set status='ended', result='R',turn=null where turn is not null and status='started'";

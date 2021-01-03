@@ -3,6 +3,7 @@ $(function() {
     show_opponent();
     show_turn();
     fetch_my_wins();
+    // setTimeout(check_player_idl, 50000);
 })
 
 $('.open-button').on('click', function() {
@@ -180,9 +181,11 @@ function checkStatus() {
             $("#play-btn").css("display", "block");
             $("#select-box-lbl").css("display", "block");
             $("#show-turn").css("display", "block");
+            $("#timer").css("display", "block");
             fetch_board();
             show_turn();
             play_btn();
+
         },
         error: function() {
             if (document.getElementById("opponent").innerHTML == "Αναζήτηση αντιπάλου...") {
@@ -194,6 +197,7 @@ function checkStatus() {
             $("#play-btn").css("display", "none");
             $("#select-box-lbl").css("display", "none");
             $("#show-turn").css("display", "none");
+            $("#timer").css("display", "none");
             fetch_board();
         }
     })
@@ -235,6 +239,7 @@ $('#play-btn').on('click', function() {
             select: select.value,
         },
         success: function() {
+            check_win();
             fetch_board();
 
         },
@@ -300,15 +305,13 @@ $(document).ready(function() {
             $("#oppWins")
                 .load('../score4.php/board/fetch_wins')
                 .fadeIn('slow');
-        }, 5000);
+        }, 4000);
     }
 })
 
 
 
-setInterval(function() {
-    check_win();
-}, 1000);
+
 
 function check_win() {
     $.ajax({
@@ -352,9 +355,10 @@ function fetch_my_wins() {
         url: '../score4.php/board/fetch_my_wins',
         method: 'GET',
         success: function() {
-            if (
-                document.getElementById('yourWins').innerHTML = '0'
-            ) {
+            // if (
+            //     document.getElementById('yourWins').innerHTML = '0'
+            // ) 
+            {
                 $("#yourWins")
                     .load('../score4.php/board/fetch_my_wins')
                     .fadeIn('slow');

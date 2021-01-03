@@ -14,6 +14,8 @@ require_once 'home/check_win.php';
 require_once 'home/show_winner.php';
 require_once 'home/insert_wins.php';
 require_once 'home/fetch_my_wins.php';
+// require_once 'home/check_player_idl.php';
+
 
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -152,5 +154,9 @@ function handle_my_wins($method){
         fetch_my_wins();
     }
 }
+
+
+
+
 
 ?>
