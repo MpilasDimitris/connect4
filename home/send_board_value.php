@@ -15,10 +15,10 @@ while($row = $result->fetch_array()){
   }
   $_SESSION['piece_color'] = $piece;
 
-if($_SESSION['player']=='player1' && $_SESSION['piece_color']=='R'){
+if($_SESSION['player']=='player1' && $_SESSION['piece_color']=='G'){
 $stmt = $mysqli->prepare("UPDATE `board`
 SET `piece_color` = 'G'
-WHERE `y`=$select and `piece_color` =''
+WHERE `y`=$select and `piece_color` ='' 
 ORDER BY `x` desc
 LIMIT 1 ");
 $stmt->execute();
@@ -26,7 +26,7 @@ $stmt->execute();
 else{
     $stmt = $mysqli->prepare("UPDATE `board`
 SET `piece_color` = 'R'
-WHERE `y`=$select and `piece_color` =''
+WHERE `y`=$select and `piece_color` ='' 
 ORDER BY `x` desc
 LIMIT 1 ");
 $stmt->execute();
