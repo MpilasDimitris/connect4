@@ -47,7 +47,7 @@ function createTable() {
 //logout button
 $('.logOut-button').click(function(e) {
     e.preventDefault();
-    var confLogOut = confirm('Εάν αποχωρήσεις θα χάσεις το παιχνίδι και θα νικήσει ο αντίπαλος!');
+    var confLogOut = confirm('Είσαι σίγουρος ότι θες να αποχωρήσης');
     if (confLogOut) {
         logout();
     }
@@ -187,18 +187,29 @@ function checkStatus() {
             play_btn();
 
         },
-        error: function() {
-            if (document.getElementById("opponent").innerHTML == "Αναζήτηση αντιπάλου...") {
+        error: function(data) {
+            console.log(data.responseJSON);
+            if (
+                document.getElementById('opponent').innerHTML == 'Αναζήτηση αντιπάλου...'
+            ) {
                 $(".start-btn").css("display", "none");
+                $("#select-box").css("display", "none");
+                $("#play-btn").css("display", "none");
+                $("#select-box-lbl").css("display", "none");
+                $("#show-turn").css("display", "none");
             } else {
-                $(".start-btn").css("display", "block");
+                if (data.responseJSON == 'initialized') {
+                    $(".start-btn").css("display", "block");
+                    $("#select-box").css("display", "none");
+                    $("#play-btn").css("display", "none");
+                    $("#select-box-lbl").css("display", "none");
+                    $("#show-turn").css("display", "none");
+
+                    fetch_board();
+                }
             }
-            $("#select-box").css("display", "none");
-            $("#play-btn").css("display", "none");
-            $("#select-box-lbl").css("display", "none");
-            $("#show-turn").css("display", "none");
-            $("#timer").css("display", "none");
-            fetch_board();
+
+
         }
     })
 }
@@ -355,9 +366,7 @@ function fetch_my_wins() {
         url: '../score4.php/board/fetch_my_wins',
         method: 'GET',
         success: function() {
-            // if (
-            //     document.getElementById('yourWins').innerHTML = '0'
-            // ) 
+
             {
                 $("#yourWins")
                     .load('../score4.php/board/fetch_my_wins')

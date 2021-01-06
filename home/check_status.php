@@ -10,7 +10,6 @@ $stmt = $mysqli->prepare("SELECT * FROM `status_turn` WHERE `status` IS NOT NULL
 $stmt->execute();
 $result = $stmt->get_result();
 $count = mysqli_num_rows($result);
-
 if($count==1){
     
     
@@ -20,22 +19,21 @@ if($count==1){
       }
 
       $_SESSION['status'] = $status;
-
-      switch ($_SESSION['status']) {
-        case 'initialized':
-          break;
-        case 'waiting':
-            $stmt = $mysqli->prepare("UPDATE `status_turn` SET  `turn`='player1' WHERE `status`='waiting'  ");
+     
+      
+      
+      if($_SESSION['status']=='waiting'){
+        $stmt = $mysqli->prepare("UPDATE `status_turn` SET  `turn`='player1' WHERE `status`='waiting'  ");
                 $stmt->execute();
-          break;
-        case 'started':
-            print json_encode($result->fetch_all(MYSQLI_ASSOC), JSON_PRETTY_PRINT);
-          break;
-         case 'ended':
-          break;
-        default:
-        header("HTTP/1.1 500 Internal Server Error"); 
       }
+      if($_SESSION['status']=='initialized'){
+        header("HTTP/1.1 400 Internal Server Error");
+      print json_encode($_SESSION['status']);
+      }
+      if($_SESSION['status']=='started'){
+        print json_encode(array('success'=>'ok'));
+      }
+
       
 }
 }
