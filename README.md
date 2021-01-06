@@ -128,7 +128,7 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE20_154594
 
 | URL  | METHOD | ACTION | 
 | ------------- | ------------- | ------------- | 
-| /board/fetch | GET  | | Επιστρέφει σε json την τρέχουσα μορφή του board |
+| /board/fetch | GET  |  Επιστρέφει σε json την τρέχουσα μορφή του board |
 | /board/send  | POST  | Στέλνει την τιμή της στήλης του board που εισήγαγε ο παίκτης |
 | /board/show_turn | GET  | Επιστρέφει σε μορφή json και εμφανίζει τη σειρά του παίκτη |
 | /board/switch_turn  | POST  |  Ανάλογα με το ποιος έπαιξε τελευταιός αλλάζει η σειρά παιξιάς |
