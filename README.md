@@ -150,7 +150,7 @@ $ git clone https://github.com/iee-ihu-gr-course1941/ADISE20_154594
 Μπίλας Δημήτρης - [@linkedin](https://www.linkedin.com/in/dimitris-mpilas-0744191b5/) 
 Gmail - mpilasdimitris@gmail.com
 
-Σελίδα project: 
+Σελίδα project: https://users.it.teithe.gr/~it154594/my_game/home/home.php
 
 
 
